@@ -21,11 +21,11 @@ __DIR = os.path.dirname(os.path.realpath(__file__))
 lib_dir = __DIR + "/lib"
 
 # URLS for libraries
-dex2jar_url = "https://dex2jar.googlecode.com/files/dex2jar-0.0.9.15.zip"
+dex2jar_url = "https://github.com/pxb1988/dex2jar/releases/download/v2.1/dex2jar-2.1.zip"
 dex2jar_zip_destination = lib_dir + "/dex2jar.zip"
-apktools_url = "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.0.0rc4.jar"
+apktools_url = "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.7.0.jar"
 apktools_destination = lib_dir + "/apktool.jar"
-decompiler_url = "https://bitbucket.org/mstrobel/procyon/downloads/procyon-decompiler-0.5.28.jar"
+decompiler_url = "https://github.com/mstrobel/procyon/releases/download/v0.6.0/procyon-decompiler-0.6.0.jar"
 decompiler_destination = lib_dir + "/procyon-decompiler.jar"
 
 
@@ -44,13 +44,11 @@ def main():
     # ############
     print("Downloading dex2jar")
     urllib.request.urlretrieve(dex2jar_url, dex2jar_zip_destination)
+    # Extract the zip
     extract(dex2jar_zip_destination)
-    zip_name = os.path.basename(dex2jar_url).split(".zip")[0]
-    # Rename dex2jar.#.#.# to dex2jar
-    os.rename(lib_dir + "/" + zip_name, lib_dir + "/dex2jar")
     # Remove the zip
     os.remove(dex2jar_zip_destination)
-    make_dir_executable(lib_dir + "/dex2jar")
+    make_dir_executable(lib_dir + "/dex-tools-2.1")
 
 
     # ############
